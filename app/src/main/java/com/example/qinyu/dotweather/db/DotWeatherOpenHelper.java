@@ -21,7 +21,7 @@ public class DotWeatherOpenHelper extends SQLiteOpenHelper {
             + "province_id integer)";
 
     public static final String CREATE_COUNTY = "create table County ( "
-            + "id integer primary key autoincrement "
+            + "id integer primary key autoincrement, "
             + "county_name text, "
             + "county_code text, "
             + "city_id integer)";
@@ -39,6 +39,6 @@ public class DotWeatherOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        
+
     }
 }

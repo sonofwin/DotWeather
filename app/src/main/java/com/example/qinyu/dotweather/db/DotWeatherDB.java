@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 
 import com.example.qinyu.dotweather.model.City;
 import com.example.qinyu.dotweather.model.County;
@@ -82,7 +83,7 @@ public class DotWeatherDB {
         if (cursor.moveToFirst()) {
             do {
                 City city = new City();
-                city.setId(cursor.getInt(cursor.getInt(cursor.getColumnIndex("id"))));
+                city.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
                 city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
                 city.setProvince_id(provinceID);
@@ -108,7 +109,8 @@ public class DotWeatherDB {
     public List<County> loadCounties(int cityId) {
         List<County> listCounty = new ArrayList<County>();
         Cursor cursor = db.query("County", null,"city_id = ?", new String[]{String.valueOf(cityId)}, null, null, null);
-        if (cursor.moveToLast()) {
+        Log.d("qinyu" , "loadCounties city_id " + cityId + " cursor size is " + cursor.getCount());
+        if (cursor.moveToFirst()) {
             do {
                 County county = new County();
                 county.setId(cursor.getInt(cursor.getColumnIndex("id")));

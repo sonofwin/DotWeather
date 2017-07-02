@@ -1,6 +1,7 @@
 package com.example.qinyu.dotweather.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.qinyu.dotweather.db.DotWeatherDB;
 import com.example.qinyu.dotweather.model.City;
@@ -48,6 +49,7 @@ public class Utility {
 
     public static boolean handleCountiesResponse(DotWeatherDB dotWeatherDB, String response, int cityId) {
         if (!TextUtils.isEmpty(response)) {
+            Log.d("qinyu","county string = " + response);
             String[] allCounties = response.split(",");
             if (allCounties != null && allCounties.length > 0) {
                 for (String c : allCounties) {
